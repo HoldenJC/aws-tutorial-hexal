@@ -7,11 +7,13 @@ exports.handler = async(event, context) => {
   let responseBody = "";
   let statusCode = 0;
 
+  const { id, productname } = JSON.parse(event.body);
+
   const params = {
     TableName: "Products",
     Item: {
-      id: '12345',
-      productname: 'Solar panels'
+      id: id,
+      productname: productname
     }
   }
 

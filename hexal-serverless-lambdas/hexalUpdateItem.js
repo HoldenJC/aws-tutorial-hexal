@@ -7,14 +7,16 @@ exports.handler = async(event, context) => {
   let responseBody = "";
   let statusCode = 0;
 
+  const { id, productname } = JSON.parse(event.body);
+
   const params = {
     TableName: "Products",
     Key: {
-      id: '12345'
+      id: id
     },
     UpdateExpression: "set productname = :n",
     ExpressionAttributeValues: {
-      ":n": "Water pumps"
+      ":n": productname
     },
     ReturnValues: "UPDATED_NEW"
   }
